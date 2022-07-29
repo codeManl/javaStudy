@@ -1,0 +1,412 @@
+思路和心得：
+
+# （一）纵向
+
+* []
+
+```python3
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        n = len(strs)
+        if n == 0:
+            return ""
+        
+        res = strs[0]
+        rn = len(res)
+        for ri in range(rn):
+            for j in range(1, n):
+                if ri == len(strs[j]) or strs[j][ri] != res[ri]:
+                    return res[0:ri]
+        return res
+```
+
+* []
+
+```c++
+class Solution 
+{
+public:
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        int n = (int)strs.size();
+        if (n == 0)
+            return "";
+        
+        string res = strs[0];
+        int rn = (int)res.size();
+
+        for (int ri = 0; ri < rn; ri ++)
+        {
+            for (int j = 1; j < n; j ++)
+            {
+                if (ri == (int)strs[j].size() || strs[j][ri] != res[ri])
+                    return res.substr(0, ri);
+            }
+        }
+
+        return res;
+    }
+};
+```
+
+* []
+
+```java
+class Solution 
+{
+    public String longestCommonPrefix(String[] strs) 
+    {
+        int n = strs.length;
+        if (n == 0)
+            return new String("");
+        
+        String res = strs[0];
+        int rn = res.length();
+        for (int ri = 0; ri < rn; ri ++)
+        {
+            for (int j = 1; j < n; j ++)
+            {
+                if (ri == strs[j].length() || strs[j].charAt(ri) != res.charAt(ri))
+                    return res.substring(0, ri);
+            }
+        }
+
+        return res;
+    }   
+}
+```
+
+# （二）横向
+
+* []
+
+```python3
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        n = len(strs)
+        if n == 0:
+            return ""
+        
+        res = strs[0]
+        for i in range(1, n):
+            res = self.get_lcp(res, strs[i])
+        return res
+        
+    
+    def get_lcp(self, a: str, b: str) -> str:
+        min_n = min(len(a), len(b))
+        for i in range(min_n):
+            if a[i] != b[i]:
+                return a[ :i]
+        return a[ : min_n]
+```
+
+* []
+
+```c++
+class Solution 
+{
+public:
+    vector<string> strs;
+
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        this->strs = strs;
+        int n = (int)strs.size();
+        if (n == 0)
+            return "";
+
+        string res = strs[0];
+        for (int i = 1; i < n; i ++)
+        {
+            res = get_lcp(res, strs[i]);
+            if ((int)res.size() == 0)
+                return "";
+        }
+        return res;
+    }
+
+    string get_lcp(string & a, string & b)
+    {
+        int min_n = min((int)a.size(), (int)b.size());
+        for (int i = 0; i < min_n; i ++)
+        {
+            if (a[i] != b[i])
+                return a.substr(0, i);
+        }
+        return a.substr(0, min_n);
+    }
+};
+```
+
+* []
+
+```java
+class Solution 
+{
+    public String longestCommonPrefix(String[] strs) 
+    {
+        int n = strs.length;
+        if (n == 0)
+            return "";
+        
+        String res = strs[0];
+        for (int i = 1; i < n; i ++)
+        {
+            res = get_lcp(res, strs[i]);
+            if (res.equals(""))
+                return "";
+        }
+        return res;
+    }
+
+    public String get_lcp(String a, String b)
+    {
+        int min_n = Math.min(a.length(), b.length());
+        for (int i = 0; i < min_n; i ++)
+        {
+            if (a.charAt(i) != b.charAt(i))
+                return a.substring(0, i);
+        }
+        return a.substring(0, min_n);
+    }
+}
+```
+
+# （三）分治
+
+* []
+
+```python3
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        n = len(strs)
+        if n == 0:
+            return ""
+        self.strs = strs
+        return self.get_lcp(0, n - 1)
+    
+    def get_lcp(self, l: int, r: int) -> str:
+        if l == r:
+            return self.strs[l]
+        
+        mid = (l + r) // 2
+        lcp1 = self.get_lcp(l, mid)
+        lcp2 = self.get_lcp(mid + 1, r)
+        min_n = min(len(lcp1), len(lcp2))
+        for i in range(min_n):
+            if lcp1[i] != lcp2[i]:
+                return lcp1[ :i]
+        return lcp1[ :min_n]
+```
+
+* []
+
+```c++
+class Solution 
+{
+public:
+    vector<string> strs;
+
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        this->strs = strs;
+        int n = (int)strs.size();
+        if (n == 0)
+            return "";
+
+        string res = strs[0];
+        for (int i = 1; i < n; i ++)
+        {
+            res = get_lcp(res, strs[i]);
+            if ((int)res.size() == 0)
+                return "";
+        }
+        return res;
+    }
+
+    string get_lcp(string & a, string & b)
+    {
+        int min_n = min((int)a.size(), (int)b.size());
+        for (int i = 0; i < min_n; i ++)
+        {
+            if (a[i] != b[i])
+                return a.substr(0, i);
+        }
+        return a.substr(0, min_n);
+    }
+};
+```
+
+* []
+
+```java
+class Solution 
+{
+    String [] strs;
+
+    public String longestCommonPrefix(String[] strs) 
+    {
+        this.strs = strs;
+        int n = strs.length;
+        if (n == 0)
+            return "";
+
+        return get_lcp(0, n - 1);
+    }
+
+    public String get_lcp(int l, int r)
+    {
+        if (l == r)
+            return strs[l];
+        int mid = (l + r) / 2;
+        String lcp1 = get_lcp(l, mid);
+        String lcp2 = get_lcp(mid + 1, r);
+        int min_n = Math.min(lcp1.length(), lcp2.length());
+        for (int i = 0; i < min_n; i ++)
+        {
+            if (lcp1.charAt(i) != lcp2.charAt(i))
+                return lcp1.substring(0, i);
+        }
+        return lcp1.substring(0, min_n);
+    }
+}
+```
+
+# （四）二分
+
+* []
+
+```python3
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        n = len(strs)
+        if n == 0:
+            return ""
+
+        def check(N: int) -> bool:
+            if len(strs[0]) < N:
+                return False
+            lcp = strs[0][ :N]
+            for i in range(1, n):
+                for j in range(N):
+                    if strs[i][j] != lcp[j]:
+                        return False
+            return True
+
+        min_len = float('inf')
+        for s in strs:
+            min_len = min(min_len, len(s))
+        l = 0
+        r = min_len
+        while l < r:
+            mid = (l + r + 1) // 2
+            if check(mid) == True:
+                l = mid
+            else:
+                r = mid - 1
+        return strs[0][ :l]
+```
+
+* []
+
+```c++
+class Solution 
+{
+public:
+    vector<string> strs;
+    int n;
+
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        this->strs = strs;
+        n = (int)strs.size();
+        if (n == 0)
+            return "";
+        
+        int min_len = INT_MAX;
+        for (string & s : strs)
+            min_len = min(min_len, (int)s.size());
+        
+        int l = 0;
+        int r = min_len;
+        while (l < r)
+        {
+            int mid = (l + r + 1) / 2;
+            if (check(mid) == true)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        return strs[0].substr(0, l);
+    }
+
+    bool check(int cn)
+    {
+        if (cn > (int)strs[0].size())
+            return false;
+        string lcp = strs[0].substr(0, cn);
+        for (int i = 1; i < n; i ++)
+        {
+            for (int j = 0; j < cn; j ++)
+            {
+                if (lcp[j] != strs[i][j])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+};
+```
+
+* []
+
+```java
+class Solution 
+{
+    String [] strs;
+    int n;
+
+    public String longestCommonPrefix(String[] strs) 
+    {
+        this.strs = strs;
+        n = strs.length;
+        if (n == 0)
+            return "";
+        
+        int min_len = Integer.MAX_VALUE;
+        for (String s : strs)
+            min_len = Math.min(min_len, s.length());
+        
+        int l = 0;
+        int r = min_len;
+        while (l < r)
+        {
+            int mid = (l + r + 1) / 2;
+            if (check(mid) == true)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        return strs[0].substring(0, l);
+    }
+
+    public boolean check(int cn)
+    {
+        if (cn > strs[0].length())
+            return false;
+        String lcp = strs[0];
+        for (int i = 1; i < n; i ++)
+        {
+            for (int j = 0; j < cn; j ++)
+            {
+                if (lcp.charAt(j) != strs[i].charAt(j))
+                    return false;
+            }
+        }
+        return true;
+    }
+}
+```
+

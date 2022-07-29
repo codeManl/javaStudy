@@ -1,0 +1,60 @@
+### 解题思路
+
+鉴于标准题解中没有C的, 感觉很不爽,因此写了一个. 绝对良心
+
+### 代码
+
+* c
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STR_LEN 200
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
+void twoStrLcp(const char* p, const char* q, char* lcpRes);
+
+char * longestCommonPrefix(char ** strs, int strsSize){
+    if (strsSize == 0) {
+        return "";
+    }
+
+    char* lcpRes = (char *) malloc(MAX_STR_LEN + 1);
+    char* lcpBuf = (char *) malloc(MAX_STR_LEN + 1);
+    memset(lcpRes, '\0', MAX_STR_LEN + 1);
+    memset(lcpBuf, '\0', MAX_STR_LEN + 1);
+
+    strcpy(lcpRes, strs[0]);
+    strcpy(lcpBuf, strs[0]);
+    for (int i = 1; i < strsSize; i++) {
+        twoStrLcp(lcpBuf, strs[i], lcpRes);
+        if (strlen(lcpRes) == 0) {
+            return "";
+        }
+        memset(lcpBuf, '\0', MAX_STR_LEN + 1);
+        strcpy(lcpBuf, lcpRes);
+    }
+    free(lcpBuf);
+    return lcpRes;
+}
+
+void twoStrLcp(const char* p, const char* q, char* lcpRes) {
+    memset(lcpRes, '\0', MAX_STR_LEN + 1);
+    size_t minLen = MIN(strlen(p), strlen(q));
+
+    size_t i = 0;
+    while (i < minLen && p[i] == q[i]) {
+        i++;
+    }
+
+    if (i != 0) {
+        strncpy(lcpRes, p, i);
+    }
+}
+
+
+
+```
+

@@ -1,0 +1,76 @@
+# 14. 最长公共前缀(Easy)
+
+![image.png](https://pic.leetcode-cn.com/1631548112-BVlbmk-image.png)
+
+## 题目描述
+
+编写一个函数来查找字符串数组中的最长公共前缀。
+
+如果不存在公共前缀，返回空字符串 ""。
+
+* 
+
+```
+示例 1：
+
+输入：strs = ["flower","flow","flight"]
+输出："fl"
+示例 2：
+
+输入：strs = ["dog","racecar","car"]
+输出：""
+解释：输入不存在公共前缀。
+```
+
+## 解法
+
+首先阅读题目,数组元素为字符串,我们要得到的是多个输出元素所共有的最长前缀,并且前缀是从字符串第一位开始计算
+
+### 思路
+
+1. 随机选择一个数组元素,将该字符串第一个字符作为最初的公共前缀
+2. 用此公共前缀在其余数组元素中进行查找，若不存在则最长公共前缀为''，并返回
+3. 反之则记录下该公共前缀，并使公共前缀长度**加一**再进行上述操作直至其余数组元素中不存在此公共前缀为止,最后返回最后被记录下的公共前缀即为最长公共前缀
+
+- 代码
+
+* 
+
+```
+ /**
+* @param {string[]} strs
+* @return {string}
+* @author LYL
+*/
+var longestCommonPrefix = function (strs) {
+ // 找到字符串长度最小的数组元素(在之后循环时可以减少循环次数)
+ let target = strs[0]
+ let min = Infinity // 初始最小字符串长度为无穷大
+ for (str of strs) {
+   if (str.length < min) {
+     target = str
+     min = str.length
+   }
+ }
+ // 找到最小元素后在target中找最长公共前缀
+ let left = 0
+ let right = left + 1
+ let commonPrefix = '' // 用于存放最长公共前缀
+ while (left < target.length && right <= target.length) {
+   let flag = strs.every((item) => { // 用item.every 判断每个数组元素是否都存在该公共前缀
+     if (item.slice(left, right) !== target.slice(left, right)) return false
+     else return true
+   })
+
+   if (flag) {
+     // 储存公共前缀后,并使公共前缀长度+1
+     commonPrefix = target.slice(left, right)
+     right++
+   }
+   // 不存在此公共前缀则终止循环
+   else return commonPrefix
+ };
+ return commonPrefix
+}
+```
+

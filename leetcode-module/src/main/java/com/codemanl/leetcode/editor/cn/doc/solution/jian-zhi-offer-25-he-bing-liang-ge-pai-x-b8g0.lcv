@@ -1,0 +1,113 @@
+# [剑指 Offer 25. 合并两个排序的链表](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)
+
+***
+
+### 思路一：迭代
+
+1. 设置dummy为哑结点，放置于新链表之前，最后返回的就是dummy.next；设置cur为当前节点，从dummy开始
+2. 当两个链表都非空时进入循环，令新链表的下一个节点cur.next为val更小的节点，相应的链表节点后移一位
+3. 每次循环记得cur也要后移一位
+4. 如果循环结束后还有链表非空，cur指向非空链表
+5. 返回dummy.next
+
+### 代码
+
+* []
+
+```Python3
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        dummy = ListNode(0)
+        cur = dummy
+        while l1 and l2:
+            if l1.val <= l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+
+        cur.next = l1 if l1 else l2
+        return dummy.next
+```
+
+* []
+
+```Java
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode();
+        ListNode cur = dummy;
+        while(l1 != null && l2 != null){
+            if(l1.val <= l2.val){
+                cur.next = l1;
+                l1 = l1.next;
+            }else{
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = l1 != null ? l1 : l2;
+        return dummy.next;
+    }
+}
+```
+
+**复杂度分析**
+- 时间复杂度：$O(m + n)$，m和n分别为两链表长度
+- 空间复杂度：$O(1)$
+
+***
+
+### 思路二：递归
+
+1. 特判：如果有一个链表为空，返回另一个链表
+2. 如果l1节点值比l2小，下一个节点应该是l1，应该return l1，在return之前，指定l1的下一个节点应该是l1.next和l2俩链表的合并后的头结点
+3. 如果l1节点值比l2大，下一个节点应该是l2，应该return l2，在return之前，指定l2的下一个节点应该是l1和l2.next俩链表的合并后的头结点
+
+### 代码
+
+* []
+
+```Python3
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        if not l1 or not l2:
+            return l1 if l1 else l2
+        if l1.val <= l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
+```
+
+* []
+
+```Java
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if(l1 == null || l2 == null){
+            return l1 != null ? l1 : l2;
+        }
+        if(l1.val <= l2.val){
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        }else{
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        } 
+    }
+}
+```
+
+**复杂度分析**
+- 时间复杂度：$O(m + n)$
+- 空间复杂度：$O(m + n)$
+
+***
+
+进阶 [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/) => [我的题解](https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/23-he-bing-kge-sheng-xu-lian-biao-gui-bi-id3s/)
+

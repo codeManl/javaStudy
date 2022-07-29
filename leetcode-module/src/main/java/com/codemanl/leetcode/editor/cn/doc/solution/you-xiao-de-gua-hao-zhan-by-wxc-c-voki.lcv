@@ -1,0 +1,46 @@
+### 解题思路
+
+所有的左括号，入栈
+遇到右括号时，如果栈顶元素是相反的括号，则出栈，反之直接返回false
+最后判断栈是否为空，为空则代表所有的括号都抵消了，如果不为空，表示有括号没有抵消，返回false
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public boolean isValid(String s) {
+       Stack<Character> stack = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            if(c == '(' || c == '[' || c == '{'){
+                stack.push(c);
+            }
+            if(c == ')'){
+                if(stack.size() > 0 && stack.lastElement() == '('){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+            }else if(c == ']'){
+                if(stack.size() > 0 && stack.lastElement() == '['){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+
+            }else if(c == '}'){
+                if(stack.size() > 0 && stack.lastElement() == '{'){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        return stack.size() == 0;
+    }
+}
+```
+
