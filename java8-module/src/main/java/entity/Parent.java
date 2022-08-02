@@ -1,6 +1,6 @@
 package entity;
 
-import annotation.MyDateFormat;
+import cn.liuelele.annotation.MyDateFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

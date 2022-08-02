@@ -1,0 +1,54 @@
+@startuml
+abstract class Animal {
+ # life : Integer
+ # metabolism(Oxygen oxygen, Water water): void
+ # sire(): Animal
+}
+
+class Oxygen {
+    property: Property
+    operation():void
+}
+class Water {
+    property: Property
+    operation():void
+}
+abstract class Bird {
++ feather: Feather
++ layEggs(): Bird
+}
+class Wing {
+    property: Property
+    operation():void
+}
+interface Fly {
+    fly():void
+}
+class WildGoose implements Fly {
+    layEggs(): Bird
+    fly():void
+}
+class Duck extends Bird {
+    layEggs(): void
+}
+class Penguin extends Bird {
+    layEggs(): void
+}
+class DonaldDuck extends Bird implements Speak {
+    speak():void
+}
+interface Speak {
+    speak(): void
+}
+class Weather {
+}
+
+Animal ..> Oxygen
+Animal ..> Water
+Bird --|> Animal
+Bird *--> Wing
+WildGoose o-- WildGooses
+DonaldDuck --|> Duck
+
+Penguin --> Weather
+@enduml

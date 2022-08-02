@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 300 width
+scale 500 height
+[*] --> 不能抽奖
+不能抽奖 --> 可以抽奖: 花费50
+可以抽奖 --> 发放奖品: 抽中
+可以抽奖 --> 不能抽奖: 没有抽中
+发放奖品 --> 奖品领完: 奖品数量为0
+发放奖品 --> 不能抽奖: 发放完还有奖品
+奖品领完 --> [*]
+note left of 可以抽奖: 中奖概率20%
+@enduml
