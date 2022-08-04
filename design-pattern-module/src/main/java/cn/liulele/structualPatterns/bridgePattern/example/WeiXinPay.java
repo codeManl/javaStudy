@@ -18,13 +18,13 @@ public class WeiXinPay extends AbstractPay {
     }
 
     @Override
-   public void doPay(String tradeId, BigDecimal money) {
+    public void doPay(String tradeId, BigDecimal money) {
         log.info("微信快捷支付安全校验开始...");
         boolean checkResult = payFastMode.security(tradeId);
-        log.info("微信快捷支付安全校验开始...");
+        log.info("微信快捷支付安全校验结束...");
         if (checkResult) {
-            log.info("微信支付成功,交易id: {} ,支付金额: {} 元", tradeId,money);
-        }else  {
+            log.info("微信支付成功,交易id: {} ,支付金额: {} 元", tradeId, money);
+        } else {
             log.error("微信快捷支付校验失败");
         }
     }
