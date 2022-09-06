@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+itstack:
+  door:
+    enable: true
+    userStr: 1001,abc,bbb

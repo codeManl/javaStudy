@@ -40,24 +40,30 @@
         <artifactId>junit</artifactId>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
+    <dependency>
+        <groupId>com.alibaba.fastjson2</groupId>
+        <artifactId>fastjson2</artifactId>
+        <version>2.0.11</version>
+    </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
-    <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-boot-starter</artifactId>
-        <version>3.5.2</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
-    <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-generator</artifactId>
-        <version>3.5.2</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.velocity</groupId>
-        <artifactId>velocity-engine-core</artifactId>
-        <version>2.3</version>
-    </dependency>
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter &ndash;&gt;-->
+<!--    <dependency>-->
+<!--        <groupId>com.baomidou</groupId>-->
+<!--        <artifactId>mybatis-plus-boot-starter</artifactId>-->
+<!--        <version>3.5.2</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator &ndash;&gt;-->
+<!--    <dependency>-->
+<!--        <groupId>com.baomidou</groupId>-->
+<!--        <artifactId>mybatis-plus-generator</artifactId>-->
+<!--        <version>3.5.2</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--        <groupId>org.apache.velocity</groupId>-->
+<!--        <artifactId>velocity-engine-core</artifactId>-->
+<!--        <version>2.3</version>-->
+<!--    </dependency>-->
 
     <!-- mysql驱动 -->
     <dependency>

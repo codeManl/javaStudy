@@ -1,6 +1,5 @@
 package entity;
 
-import cn.liuelele.annotation.MyDateFormat;
 import lombok.*;
 
 /**
@@ -42,7 +41,6 @@ public class Person extends Parent {
     /**
      * 业务日期
      */
-    @MyDateFormat
     private String settleDate;
 
 }

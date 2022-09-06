@@ -1,5 +1,7 @@
 package reflection;
 
+import entity.Person;
+
 import java.lang.reflect.InvocationTargetException;
 
 public class Main {
