@@ -11,6 +11,7 @@
         <module>../faced-pattern-demo-module</module>
         <module>../faced-pattern-demo2-module</module>
         <module>../proxy-pattern-demo-module</module>
+        <module>../spring-elasticsearch-study-module</module>
     </modules>
 
     <properties>
