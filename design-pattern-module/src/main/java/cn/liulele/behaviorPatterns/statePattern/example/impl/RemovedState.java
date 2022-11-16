@@ -6,7 +6,7 @@ import cn.liulele.behaviorPatterns.statePattern.example.entity.User;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 已删除状态
  * @date 2022/9/19 21:37:37
  */

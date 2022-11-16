@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 外观模式门面注解，此注解会被添加到需要添加扩展白名单的方法上
  * @date 2022/8/16 22:00:00
  */

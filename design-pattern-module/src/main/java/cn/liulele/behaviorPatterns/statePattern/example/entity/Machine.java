@@ -3,7 +3,7 @@ package cn.liulele.behaviorPatterns.statePattern.example.entity;
 import lombok.Data;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/19 19:50:50
  */

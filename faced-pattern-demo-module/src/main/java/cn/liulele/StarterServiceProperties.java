@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @description 
- * @author liuele
+ * @author liulele
  * @date 2022/8/16 21:45:45
  */
 @ConfigurationProperties("itstack.door")

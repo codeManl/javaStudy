@@ -4,7 +4,7 @@ import thread.consumerandproducer.consumer.ConsumerBySynchronized;
 import thread.consumerandproducer.producer.ProducerBySynchronized;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/7 20:17:17
  */

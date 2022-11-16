@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 配置获取服务
  * @date 2022/8/16 21:52:52
  */

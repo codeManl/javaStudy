@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 单机模式下调用redis服务的工具类
  * @date 2022/8/27 16:37:37
  */

@@ -3,7 +3,7 @@ package cn.liulele.creationalPatterns.abstractFactoryPattern.example;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/8/27 16:47:47
  */

@@ -6,7 +6,7 @@ import cn.liulele.behaviorPatterns.statePattern.example.StateManager;
 import cn.liulele.behaviorPatterns.statePattern.example.entity.User;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/19 19:51:51
  */

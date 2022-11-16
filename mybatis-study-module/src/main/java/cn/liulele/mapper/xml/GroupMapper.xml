@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace对应mapper接口所在的位置-->
+<mapper namespace="cn.liulele.mapper.GroupMapper">
+    <insert id="generateGroupOrderBefore">
+        INSERT INTO group_order (groupname, mname)
+        SELECT *
+        FROM (SELECT b.groupname,
+                     a.mname
+              FROM group_provide_member a
+                       LEFT JOIN (SELECT x.groupname,
+                                         x.mname
+                                  FROM tq_group_member_bi x
+                                  UNION
+                                  SELECT y.groupname,
+                                         y.mname
+                                  FROM tq_group_member_lc y) b
+                                 ON a.mname = b.mname) t
+        ORDER BY t.groupname DESC
+    </insert>
+    <insert id="generateGroupSmall">
+        INSERT INTO group_small (group_name, mname, itcode, address)
+        SELECT t.*,
+               t2.keyname
+        FROM (SELECT b.groupname,
+                     b.mname,
+                     b.itcode
+              FROM (SELECT DISTINCT groupname FROM group_order) a
+                       LEFT JOIN (SELECT x.groupname,
+                                         x.mname,
+                                         x.itcode
+                                  FROM tq_group_member_bi x
+                                  UNION
+                                  SELECT y.groupname,
+                                         y.mname,
+                                         y.itcode
+                                  FROM tq_group_member_lc y) b
+                                 ON a.groupname = b.groupname) t
+                 LEFT JOIN (SELECT compcode,
+                                   GROUP_CONCAT(keyname ORDER BY boardcode) AS keyname
+                            FROM tq_comp_cboardmap
+                            WHERE boardcode IN (1101, 1102, 1103)
+                            GROUP BY compcode) t2
+                           ON t.itcode = t2.compcode
+    </insert>
+    <insert id="insertAllOrderAfter">
+        insert into group_order_after (id, groupname, mname)
+        values (#{id}, #{groupname}, #{mname});
+    </insert>
+
+    <update id="truncateGroupOrder">
+        TRUNCATE TABLE group_order
+    </update>
+
+    <update id="truncateGroupSmall">
+        TRUNCATE TABLE group_small
+    </update>
+    <update id="updateIsProvide">
+        UPDATE group_small
+        SET is_provide = 1
+        WHERE id IN (SELECT id
+                     FROM (SELECT b.id
+                           FROM group_order a
+                                    LEFT JOIN group_small b
+                                              ON a.groupname = b.group_name
+                                                  AND a.mname = b.mname) c)
+    </update>
+    <update id="truncateGroupOrderAfter">
+        truncate table group_order_after
+    </update>
+    <select id="getOrderBefore" resultType="cn.liulele.entity.GroupOrder">
+        SELECT id, groupname, mname
+        FROM group_order
+        order by mname
+    </select>
+</mapper>

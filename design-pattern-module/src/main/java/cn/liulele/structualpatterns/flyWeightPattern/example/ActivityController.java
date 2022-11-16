@@ -1,7 +1,7 @@
 package cn.liulele.structualpatterns.flyWeightPattern.example;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/6 20:08:08
  */

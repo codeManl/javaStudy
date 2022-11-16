@@ -5,7 +5,7 @@ import cn.liulele.structualpatterns.decoratorPattern.example.SSOInterceptor;
 import org.junit.Test;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/17 21:33:33
  */

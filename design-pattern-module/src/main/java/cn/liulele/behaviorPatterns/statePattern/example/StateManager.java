@@ -5,7 +5,7 @@ import cn.liulele.behaviorPatterns.statePattern.example.entity.User;
 import cn.liulele.behaviorPatterns.statePattern.example.impl.*;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 状态管理器 负责状态的转换及初始化状态的设置
  * @date 2022/9/19 21:54:54
  */

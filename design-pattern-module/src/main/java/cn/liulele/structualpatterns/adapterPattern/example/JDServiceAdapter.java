@@ -1,7 +1,7 @@
 package cn.liulele.structualpatterns.adapterPattern.example;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/8/17 21:28:28
  */

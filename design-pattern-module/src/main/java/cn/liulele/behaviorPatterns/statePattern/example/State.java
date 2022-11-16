@@ -4,7 +4,7 @@ import cn.liulele.behaviorPatterns.statePattern.example.entity.Machine;
 import cn.liulele.behaviorPatterns.statePattern.example.entity.User;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 状态接口，在这里定义各种状态下可以进行的操作
  * @date 2022/9/19 19:44:44
  */

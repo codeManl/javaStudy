@@ -3,7 +3,7 @@ package thread.consumerandproducer.producer;
 import thread.consumerandproducer.BufferArea;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/7 20:03:03
  */

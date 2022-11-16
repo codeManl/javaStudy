@@ -9,7 +9,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/17 23:34:34
  */

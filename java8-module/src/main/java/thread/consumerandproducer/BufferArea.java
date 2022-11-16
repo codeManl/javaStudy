@@ -3,7 +3,7 @@ package thread.consumerandproducer;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author liuele
+ * @author liulele
  * @description
  * @date 2022/9/7 20:07:07
  */

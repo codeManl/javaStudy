@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author liuele
+ * @author liulele
  * @description 集群A使用的redis工具类
  * @date 2022/8/27 16:35:35
  */
