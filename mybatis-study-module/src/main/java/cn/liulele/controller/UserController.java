@@ -22,4 +22,9 @@ public class UserController {
         System.out.println(integer);
         return integer;
     }
+
+    @RequestMapping("generateGAV")
+    public void generateGAV() throws Exception {
+       service.generateGAV();
+    }
 }

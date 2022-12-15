@@ -20,6 +20,7 @@
                                  ON a.mname = b.mname) t
         ORDER BY t.groupname DESC
     </insert>
+
     <insert id="generateGroupSmall">
         INSERT INTO group_small (group_name, mname, itcode, address)
         SELECT t.*,
@@ -45,6 +46,7 @@
                             GROUP BY compcode) t2
                            ON t.itcode = t2.compcode
     </insert>
+
     <insert id="insertAllOrderAfter">
         insert into group_order_after (id, groupname, mname)
         values (#{id}, #{groupname}, #{mname});

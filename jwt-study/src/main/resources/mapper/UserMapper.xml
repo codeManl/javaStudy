@@ -3,10 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace对应mapper接口所在的位置-->
-<mapper namespace="cn.liulele.mapper.UserMapper">
+<mapper namespace="cn.liulele.jwt.mapper.UserMapper">
 
-    <select id="selectOne" resultType="java.lang.Integer">
-        select 1
-        from dual;
+    <select id="selectUserInfoByName" resultType="cn.liulele.jwt.entity.User">
+        SELECT * FROM sys_user WHERE user_name = #{username}
     </select>
 </mapper>

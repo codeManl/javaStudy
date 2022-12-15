@@ -8,4 +8,7 @@ package cn.liulele.service;
 public interface UserService {
 
     Integer selectOne(Integer id);
+
+    void generateGAV() throws Exception;
+
 }

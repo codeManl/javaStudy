@@ -1,9 +1,9 @@
 server:
-  port: 5602
+  port: 5601
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/caihui?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    url: jdbc:mysql://192.168.44.101:3306/jwt?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: pwd=142857
     type: com.alibaba.druid.pool.DruidDataSource
@@ -42,11 +42,15 @@ spring:
         enabled: true
         login-username: druid
         login-password: druid
+  redis:
+    host: 192.168.44.101
+    password: pwd=142857
+    port: 6379
 mybatis:
-  type-aliases-package: cn.liulele.entity
-  mapper-locations: classpath:/mapper/xml/*Mapper.xml
+  type-aliases-package: cn.liulele.jwt.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
 logging:
   level:
-    cn.liulele.mapper: debug
+    cn.liulele.jwt.mapper: debug
